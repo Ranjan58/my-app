@@ -1,18 +1,21 @@
 pipeline {
     agent any
+    tools {
+        maven
+    }
     stages {
         stage('----clean----') {
-            steps {
+            steps withmaven{
                 sh "mvn clean"
             }
         }
         stage('----test----') {
-            steps {
+            steps withmaven{
                 sh 'mvn test'
             }
         }
         stage('----package----') {
-            steps {
+            steps withmaven{
                 sh 'mvn package'
             }
         }
